@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+let vidaGoku = 100;
+let vidaSuperman = 100;
+
+const MIN_POWER = 5;
+const MAX_POWER = 12;
+
+const ambosSiguenVivos = () => vidaGoku > 0 && vidaSuperman > 0;
+
+const calcularGolpe = () => Math.round(Math.random() * (MAX_POWER - MIN_POWER) + MIN_POWER);
+
+const gokuSigueVivo = () => vidaGoku > 0;
+
+let round = 1;
+
+while (ambosSiguenVivos()) {
+    console.log(`Round ${round}`);
+
+    const golpeGoku = calcularGolpe();
+    const golpeSuperman = calcularGolpe();
+
+    if (golpeGoku > golpeSuperman) {
+        console.log(`Goku ataca a superman con golpe de ${golpeGoku}`);
+        vidaSuperman -= golpeGoku;
+    } else {
+        console.log(`Superman ataca a Gokú con golpe de ${golpeSuperman}`);
+        vidaGoku -= golpeSuperman;
+    }
+
+    round++;
+
+    console.log(`Vida de Gokú ${vidaGoku}`);
+    console.log(`Vida de Superman ${vidaSuperman}`);
+}
+
+if (gokuSigueVivo()) {
+    console.log(`Goku ganó la pelea. Su vida es de: ${vidaGoku}`);
+} else {
+    console.log(`Superman ganó la pelea. Su vida es de: ${vidaSuperman}`);
+}
+
+
+</script>
