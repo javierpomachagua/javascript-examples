@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Call y Apply</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .body {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <button id="button">Off</button>    
+</body>
+</html>
+
+<script>
+
+const mascota = {
+    nombre: 'Jack',
+    apellido: 'Poma'
+};
+
+function saludar(veces, uppercase) {
+    for (let i = 0; i < veces; i++) {
+        console.log(`Hola ${this.nombre} ${this.apellido}`);
+    }
+}
+
+saludar.call(mascota, 3);
+
+////////////////////////////////////////////////////////
+const pet = {
+    nombre: 'Bonnie'    
+};
+
+const gifts = ['ball', 'chicken toy', 'kong toy'];
+
+const getHobby = function(...gifts) {
+    self = this;
+    gifts.forEach(function(item){
+        console.log(`${self.nombre} likes to play with ${item}`);
+    });    
+}
+
+getHobby.apply(pet, gifts);
+
+
+
+</script>

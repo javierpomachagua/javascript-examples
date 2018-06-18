@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Closure</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+/*
+
+function saludarFamilia(apellido) {
+    return function saludarNombre(nombre, edad) {
+        console.log(`Hola ${nombre} ${apellido} de ${edad} años`);
+    }
+}
+
+const saludarGomez = saludarFamilia('Gomez');
+saludarGomez('Nerio', 40);
+
+*/
+
+makePrefixer = (prefijo) => (cadena) => console.log(`${prefijo}${cadena}`);    
+
+const prefijoRe = makePrefixer('re');
+const prefijoIn = makePrefixer('in');
+
+prefijoRe('malo');
+prefijoIn('creible');
+
+</script>

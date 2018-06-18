@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bind</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .body {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <button id="button">Off</button>    
+</body>
+</html>
+
+<script>
+
+class Toggable {
+    constructor(el) {
+        this.el = el;
+        this.el.innerHTML = 'Off';
+        this.activated = false;
+        this.el.addEventListener('click', this.onClick.bind(this));
+    }
+
+    onClick() {
+        //cambiar estado interno
+        this.activated = !this.activated;
+        this.toggleText();
+    }
+
+    toggleText() {
+        // cambiar el texto
+        this.el.innerHTML = this.activated ? 'On' : 'Off';
+    }
+}
+
+const button  = document.getElementById('button');
+const myButton = new Toggable(button);
+
+////////////////////////////////////////////////////////////
+
+const hablar = function(l1, l2, l3) {
+  console.log(`Hola mi nombre es ${this.nombre}
+               y se programar en ${l1}, ${l2}, ${l3}.`);
+};
+
+const yeison = {
+  nombre: 'Yeison',
+  edad: 22
+};
+
+const lenguajes = ['JavaScript', 'Python', 'C'];
+
+const hablaYeison = hablar.bind(yeison, ... lenguajes);
+
+console.log('aqui',hablaYeison());
+
+
+///////////////////////////////////////////////////////7
+
+this.x = 9;
+var module = {
+  x: 81,
+  getX: function() { return this.x; }
+};
+
+const getX = module.getX;
+
+const valor = getX.bind(module);
+
+console.log('i:', this.x);
+console.log('ii:', getX());
+console.log('iii:', valor());
+//module.getX(); // 81
+//console.log('ii:', this.x);
+
+
+// Crear una nueva función con 'this' asociado al objeto original 'module'
+//var boundGetX = getX.bind(module);
+//boundGetX(); // 81
+
+
+////////////////////////////////////////////////////////////
+var calc = {
+    add: function (a,b) {
+        return a + b;
+    },
+    sub: function (a,b) {
+        return this.add(a,-b);
+    }
+};
+
+console.log(calc.sub(10,1));
+const substraction = calc.sub.bind(calc);
+console.log(substraction(5,3));
+
+
+</script>

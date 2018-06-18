@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Objetos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+function Punto(x,y){ 
+    this.x = x,
+    this.y = y
+}
+
+Punto.prototype.moverX = function moverX(x){this.x += x;}
+Punto.prototype.moverY = function moverY(y){this.y += y;}
+
+Punto.prototype.distancia = function distancia(p) {
+    const x = this.x - p.x;
+    const y = this.y - p.y;
+
+    return Math.sqrt(x * x + y * y)
+}
+
+const p1 = new Punto(0 , 4);
+const p2 = new Punto(3 , 0);
+
+p1.moverX(3);
+
+console.log(p1);
+console.log(p1.distancia(p2));
+
+
+function Carro(marca, color) {
+    this.marca = marca;
+    this.color = color;
+}
+
+Carro.prototype.setColor = function setColor(color) {
+    this.color = color;
+}
+
+const carro = new Carro('hyundai','rojo');
+console.log(carro);
+carro.setColor('azul');
+console.log(carro);
+
+const carro2 = Object.create(carro);
+console.log(carro2);
+
+</script>
