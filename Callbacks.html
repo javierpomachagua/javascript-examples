@@ -87,17 +87,7 @@ const breed = document.getElementById('breed');
 
 function searchByBreed() {
     results.innerHTML = '';    
-    if (breed.value.toLowerCase() === 'jack') {
-        results.innerHTML +='<div class="col-md-4">' +
-                                '<div class="card animated scale">' +                                                                    
-                                    '<img class="card-img-top" src="https://lh3.googleusercontent.com/QQgmEw-o3iRE1fK4S4uEN5W1mBSzgmTcVCNHSbD-0EJAURprzLC-3_WXDN3MzCbWUDtGuQ1qX-erVj339aWnanAnZegXfaFfbDHs74zPFqHTtihbM9ztbvKAL4dl_HQFyvi4rVwfIA=s250-k-rw-no" alt="Card image cap">' +
-                                    '<div class="card-body">' +
-                                    '<h5 class="card-title">Jackzote!!!</h5>' +                                    
-                                '</div>' +
-                            '</div>';
-    } else {
-        getSubBreeds(breed.value.toLowerCase());
-    }    
+    getSubBreeds(breed.value.toLowerCase());    
 }
 
 function getBreeds() {
