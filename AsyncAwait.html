@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Async Await</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">        
+    
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+function _handleError(err) {
+    console.log(`Request failed: ${err}`);  
+}
+
+async function getLuke() {
+    const responseCharacter = await fetch('https://swapi.co/api/people/5/');
+    const luke = await responseCharacter.json();
+    const responseHomeWorld = await fetch(luke.homeworld);
+    luke.homeworld = await responseHomeWorld.json();   
+
+    console.log(`${luke.name} nación en ${luke.homeworld.name}`);
+}
+
+getLuke();
+
+</script>
